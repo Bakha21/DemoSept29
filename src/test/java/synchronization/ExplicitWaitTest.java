@@ -19,13 +19,14 @@ public class ExplicitWaitTest extends Base {
 	@Test
 	public void textCase() {
 		WebDriverWait wait =new WebDriverWait(driver,  10);
+		By rentalCarsXpath = By.xpath("//ul[@id='uitk-tabs-button-container']/li/a/span[text()='Rental cars']");
 		
 		driver.get(expediaURL);
 
 		driver.findElement(By.xpath("//ul[@id='uitk-tabs-button-container']/li[3]/a")).click();
-		wait.until(ExpectedConditions.visibilityOfAllElementsLocatedBy(locator));
+		wait.until(ExpectedConditions.visibilityOfAllElementsLocatedBy(rentalCarsXpath));
 
-		List<WebElement> rentalCarsBtn = driver.findElements(By.xpath("//ul[@id='uitk-tabs-button-container']/li/a/span[text()='Rental cars']"));
+		List<WebElement> rentalCarsBtn = driver.findElements(rentalCarsXpath);
 		boolean rentalCarsBtnExists = rentalCarsBtn.size() > 0;
 		System.out.println("Found:" + rentalCarsBtn.size());
 
